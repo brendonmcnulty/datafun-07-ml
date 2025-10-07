@@ -1,155 +1,100 @@
-# DataFun-07-ML  
+# Machine Learning Final Project  
 **Author:** Brendon McNulty  
 
 ---
 
-## Module Goal  
-In this module, we begin a guided machine learning project. We create and manage a professional workflow using GitHub for version control, VS Code for development, and JupyterLab for exploration and analysis.  
+## 🎯 Project Overview
+This project demonstrates the foundational concepts of **machine learning** through two linear modeling exercises:  
+1. A simple mathematical example illustrating a **perfect linear relationship** (Celsius → Fahrenheit).  
+2. A real-world **regression analysis** predicting average January high temperatures in New York City using historical data from 1895–2018.
 
-We'll use predictive analytics and introduce machine learning concepts while following a repeatable, professional data workflow.  
-
----
-
-## Project Setup Steps  
-
-### 1. Create and Clone the Repository  
-Created a new GitHub repository named **datafun-07-ml** with a default `README.md`.  
-Cloned the repository to the local folder:  
-
-git clone https://github.com/your-username/datafun-07-ml.git
-cd datafun-07-ml
-
-yaml
-Copy code
+The notebook, **`brendon_ml_final.ipynb`**, walks through every step of the professional data workflow — from loading and inspecting data to modeling, prediction, and visualization with confidence intervals.
 
 ---
 
-### 2. Add Common Project Files  
-Added `.gitignore` and `requirements.txt` to define dependencies and ignored files.  
-
-**.gitignore includes:**  
-.venv/
-pycache/
-.ipynb_checkpoints/
-.vscode/
-data/
-
-markdown
-Copy code
-
-**requirements.txt includes:**  
-jupyterlab
-numpy
-pandas
-pyarrow
-matplotlib
-seaborn
-scipy
-scikit-learn
-
-yaml
-Copy code
+## 🧩 Tools and Libraries
+The following libraries were used:
+- **pandas** — data manipulation and cleaning  
+- **NumPy** — numeric computation  
+- **matplotlib / seaborn** — data visualization  
+- **SciPy** — regression modeling (`stats.linregress`)  
+- **scikit-learn** — data splitting and potential model comparisons  
 
 ---
 
-### 3. Create and Activate Virtual Environment  
-Created and activated a virtual environment to isolate dependencies:  
+## 🧮 Part 1 — Chart a Straight Line (Celsius to Fahrenheit)
+To introduce linear relationships, a simple function was created to convert Celsius to Fahrenheit:
 
-py -m venv .venv
-.venv\Scripts\Activate
-py -m pip install --upgrade pip
-py -m pip install -r requirements.txt
+\[
+F = \frac{9}{5}C + 32
+\]
 
-yaml
-Copy code
+Using a **lambda function** and **list comprehension**, a set of temperature pairs was generated and displayed as a labeled DataFrame.  
+A corresponding plot was created to visualize this perfect linear relationship.
 
----
-
-### 4. Launch JupyterLab  
-Launched JupyterLab to begin analysis and machine learning exploration:  
-
-jupyter lab
-
-yaml
-Copy code
+**Key takeaway:**  
+Every Celsius–Fahrenheit pair lies exactly on the same line, showing a **perfect linear correlation** — an ideal foundation for understanding linear regression.
 
 ---
 
-## Chapter 10: Object-Oriented Programming (OOP)  
-In this section, we reviewed object-oriented programming concepts using Python classes and methods.  
+## 🌡️ Part 2 — Predicting NYC January High Temperatures (1895–2018)
 
-### Example: Custom `Account` Class  
-We imported and ran an example from the Deitel & Associates textbook repository to explore:  
-- How Python uses classes and objects  
-- How attributes (data) and methods (functions) interact inside a class  
+### **Sections 1–4: Data Preparation**
+- Loaded data from `ave_hi_nyc_jan_1895-2018.csv`
+- Inspected the dataset (`head()`, `tail()`, `info()`)
+- Cleaned and renamed columns (`Year`, `Temperature`, `Anomaly`)
+- Extracted `Year` from the combined `Date` column
+- Generated descriptive statistics and visualized temperature trends over time
 
-We created an instance of the `Account` class, deposited funds, and printed a formatted balance message.  
-
-**Key Concepts:**  
-- Encapsulation and data protection using attributes  
-- Methods for interacting with data (e.g., `deposit()`, `withdraw()`)  
-- Using class instances to represent real-world entities  
+**Observation:**  
+The raw data shows natural year-to-year variability with a gradual upward trend, suggesting long-term warming.
 
 ---
 
-## Chapter 15: Machine Learning Examples  
+### **Sections 5–7: Linear Regression Model, Prediction, and Visualization**
+Used **SciPy’s `linregress`** to compute the best-fit line:
 
-### Example 1 — Time Series & Simple Linear Regression (`15_04.py`)  
-This example uses **pandas** and **scikit-learn** to model NYC January temperature trends from 1895–2018.  
+\[
+\hat{y} = m x + b
+\]
 
-**Key Steps:**  
-- Load data from `ave_hi_nyc_jan_1895-2018.csv`  
-- Train and test a **Linear Regression** model  
-- Predict future and past temperatures  
-- Visualize the regression trendline with **Seaborn** and **Matplotlib**  
+**Model outputs included:**
+- Slope (`m`)
+- Intercept (`b`)
+- Correlation coefficient (`r`)
+- P-value
+- Standard error of slope
+
+**Prediction:**  
+The model was then used to estimate the **average January high temperature for 2024**.
+
+**Visualization:**
+- Scatter plot of historical data (Year vs. Temperature)
+- Best-fit regression line overlay
+- Highlighted 2024 predicted value in red
+- Added **95% confidence interval shading** to show the model’s uncertainty range
 
 **Result:**  
-A regression line showing a gradual increase in average NYC January temperatures over time.  
+The regression line reveals a gradual upward trend over time, consistent with observed warming patterns in NYC’s winter climate.
 
 ---
 
-### Example 2 — Dimensionality Reduction with t-SNE (`15_06.py`)  
-This example demonstrates **unsupervised learning** using t-SNE to reduce high-dimensional data (handwritten digits) into a 2D representation.  
-
-**Key Steps:**  
-- Load digit data from `sklearn.datasets.load_digits()`  
-- Apply **t-SNE** (`sklearn.manifold.TSNE`) for dimensionality reduction  
-- Visualize the clusters in 2D with **Matplotlib**  
-
-**Result:**  
-Each cluster corresponds to a digit (0–9), showing how t-SNE groups similar features together visually.  
+## 🧠 Key Learnings and Takeaways
+- Learned how to implement **linear regression** using both mathematical logic and real data.
+- Understood how to interpret slope, intercept, and correlation statistics.
+- Practiced **data cleaning**, **feature extraction**, and **visual storytelling** using Python.
+- Added **confidence intervals** to communicate model reliability visually.
+- Combined both **perfect and imperfect** examples to understand how real-world data differs from theoretical relationships.
 
 ---
 
-## Skills and Concepts Covered  
-- Object-Oriented Programming  
-- Data exploration with pandas  
-- Train-test splitting with scikit-learn  
-- Linear Regression modeling  
-- Data visualization with Seaborn and Matplotlib  
-- Dimensionality reduction (t-SNE)  
-- Version control with Git & GitHub  
-- Reproducible data workflows  
-
----
-
-## Summary  
-This module combined object-oriented principles with foundational machine learning workflows.  
-Through both supervised and unsupervised examples, we practiced real-world data handling, model training, and visualization techniques using professional tools like **JupyterLab**, **VS Code**, and **GitHub**.  
-
----
-
-## Repository Structure  
+## 🗂️ Project Structure
 datafun-07-ml/
 │
-├── .venv/ # Virtual environment (ignored by Git)
 ├── examples/
 │ └── ch15/
-│ ├── 15_04.py # Time Series Linear Regression
-│ ├── 15_06.py # t-SNE Dimensionality Reduction
-│ └── ave_hi_nyc_jan_1895-2018.csv
+│ ├── ave_hi_nyc_jan_1895-2018.csv
 │
-├── ml_ch10_intro.ipynb # OOP examples and explanations
-├── ml_ch15_examples.ipynb # Machine Learning examples and visualizations
-├── README.md # Project overview and documentation
-└── requirements.txt # Dependencies list
+├── brendon_ml_final.ipynb # Final machine learning project notebook
+├── README.md # Project overview and reflection
+└── requirements.txt # Dependencies
