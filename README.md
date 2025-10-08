@@ -1,94 +1,103 @@
-# Machine Learning Final Project  
+# DataFun-07-ML  
 **Author:** Brendon McNulty  
 
 ---
 
 ## 🎯 Project Overview
-This project demonstrates the foundational concepts of **machine learning** through two linear modeling exercises:  
-1. A simple mathematical example illustrating a **perfect linear relationship** (Celsius → Fahrenheit).  
-2. A real-world **regression analysis** predicting average January high temperatures in New York City using historical data from 1895–2018.
 
-The notebook, **`brendon_ml_final.ipynb`**, walks through every step of the professional data workflow — from loading and inspecting data to modeling, prediction, and visualization with confidence intervals.
+This project explores **Machine Learning with Linear Regression** using real NYC weather data.  
+We apply a complete machine learning workflow — from data acquisition to prediction — to model and forecast **average January high temperatures** in New York City.
 
----
-
-## 🧩 Tools and Libraries
-The following libraries were used:
-- **pandas** — data manipulation and cleaning  
-- **NumPy** — numeric computation  
-- **matplotlib / seaborn** — data visualization  
-- **SciPy** — regression modeling (`stats.linregress`)  
-- **scikit-learn** — data splitting and potential model comparisons  
+The project is divided into three main parts, progressively building skills in data handling, modeling, and visualization.
 
 ---
 
-## 🧮 Part 1 — Chart a Straight Line (Celsius to Fahrenheit)
-To introduce linear relationships, a simple function was created to convert Celsius to Fahrenheit:
+## 🧱 Part 1 — Chart a Straight Line (10.16)
+
+We began by revisiting the equation for a straight line:
 
 \[
 F = \frac{9}{5}C + 32
 \]
 
-Using a **lambda function** and **list comprehension**, a set of temperature pairs was generated and displayed as a labeled DataFrame.  
-A corresponding plot was created to visualize this perfect linear relationship.
-
-**Key takeaway:**  
-Every Celsius–Fahrenheit pair lies exactly on the same line, showing a **perfect linear correlation** — an ideal foundation for understanding linear regression.
+- Practiced plotting a perfect linear model between **Celsius and Fahrenheit** using Matplotlib.  
+- Explored the meaning of slope (*m*) and intercept (*b*) in a simple, exact linear relationship.  
+- Visualized the relationship where each Celsius value maps perfectly to Fahrenheit — demonstrating a **perfect linear correlation**.
 
 ---
 
-## 🌡️ Part 2 — Predicting NYC January High Temperatures (1895–2018)
+## 🌡️ Part 2 — Predict NYC January High Temperatures
 
-### **Sections 1–4: Data Preparation**
-- Loaded data from `ave_hi_nyc_jan_1895-2018.csv`
-- Inspected the dataset (`head()`, `tail()`, `info()`)
-- Cleaned and renamed columns (`Year`, `Temperature`, `Anomaly`)
-- Extracted `Year` from the combined `Date` column
-- Generated descriptive statistics and visualized temperature trends over time
+We transitioned from theoretical data to **real-world data** — NYC’s January high temperatures from **1895–2018**.
 
-**Observation:**  
-The raw data shows natural year-to-year variability with a gradual upward trend, suggesting long-term warming.
+Steps included:
+1. **Data Acquisition:** Loaded the dataset into a Pandas DataFrame.  
+2. **Data Inspection:** Reviewed structure and content with `.head()` and `.tail()`.  
+3. **Data Cleaning:** Renamed columns, handled missing values, and ensured date accuracy.  
+4. **Descriptive Statistics:** Used `.describe()` to summarize central tendency and spread.  
 
----
+We then used **SciPy’s `linregress()`** to calculate:
+- Slope (*m*) — the rate of change in temperature over time.  
+- Intercept (*b*) — the base temperature where the regression line crosses the y-axis.  
 
-### **Sections 5–7: Linear Regression Model, Prediction, and Visualization**
-Used **SciPy’s `linregress`** to compute the best-fit line:
+Our fitted line took the form:
 
 \[
-\hat{y} = m x + b
+\hat{y} = m \cdot x + b
 \]
 
-**Model outputs included:**
-- Slope (`m`)
-- Intercept (`b`)
-- Correlation coefficient (`r`)
-- P-value
-- Standard error of slope
-
-**Prediction:**  
-The model was then used to estimate the **average January high temperature for 2024**.
-
-**Visualization:**
-- Scatter plot of historical data (Year vs. Temperature)
-- Best-fit regression line overlay
-- Highlighted 2024 predicted value in red
-- Added **95% confidence interval shading** to show the model’s uncertainty range
-
-**Result:**  
-The regression line reveals a gradual upward trend over time, consistent with observed warming patterns in NYC’s winter climate.
+where  
+- \( \hat{y} \) = predicted temperature  
+- \( x \) = year  
+- \( m \) = slope  
+- \( b \) = intercept  
 
 ---
 
-## 🧠 Key Learnings and Takeaways
-- Learned how to implement **linear regression** using both mathematical logic and real data.
-- Understood how to interpret slope, intercept, and correlation statistics.
-- Practiced **data cleaning**, **feature extraction**, and **visual storytelling** using Python.
-- Added **confidence intervals** to communicate model reliability visually.
-- Combined both **perfect and imperfect** examples to understand how real-world data differs from theoretical relationships.
+## 📈 Part 3 — Build, Test, and Predict
+
+In the final stage, we:
+1. **Built and tested** the model using `train_test_split` for training and validation.  
+2. **Predicted** the **average NYC January high temperature for 2024**.  
+3. **Visualized** the regression model using Seaborn and Matplotlib with a best-fit line overlayed on the scatter plot of historical data.
+
+The model revealed a **gradual upward trend** in average January temperatures over more than a century, consistent with long-term climate warming trends.
 
 ---
 
-## 🗂️ Project Structure
+## Final Analysis and Reflection
+
+This project demonstrated how linear regression can model real-world data trends while introducing the fundamental workflow of **supervised learning**.
+
+Key takeaways:
+- Linear regression can effectively model continuous numeric trends over time.  
+- Historical climate data provides an excellent example of linear relationships with real impact.  
+- Visualization helps connect mathematical models with intuitive understanding.  
+
+Although the linear model captures general warming, more advanced models (like polynomial regression or time series forecasting) could provide deeper insight into non-linear or seasonal climate effects.
+
+---
+
+## Tools and Technologies
+- **Python**
+- **JupyterLab**
+- **NumPy**, **Pandas**, **SciPy**, **Matplotlib**, **Seaborn**
+- **Scikit-learn** (for model training and testing)
+- **Git & GitHub** for version control
+
+---
+
+## How to Run This Project
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/datafun-07-ml.git
+   cd datafun-07-ml
+
+
+---
+
+##  Project Structure
 datafun-07-ml/
 │
 ├── examples/
